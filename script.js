@@ -1,9 +1,9 @@
 // Write your JavaScript code here!
 window.addEventListener("load", function() {
-   this.fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
       response.json().then(function(json) {
-         const div = document.getElementById("missionTaget");
-         const missionDestination = Math.round(Math.random()*5);
+         const div = document.getElementById("missionTarget");
+         const missionDestination = Math.round(Math.random()*json.length);
          div.innerHTML = `
          <h2>Mission Destination</h2>
          <ol>
@@ -12,7 +12,7 @@ window.addEventListener("load", function() {
             <li>Star: ${json[missionDestination].star}</li>
             <li>Distance from Earth: ${json[missionDestination].moons}</li>
             </ol>
-            <img src = "${json[missionDestination].image}">
+            <img src="${json[missionDestination].image}">
          `;   
    });
 });
@@ -25,7 +25,7 @@ form.addEventListener("submit", function(event){
    let cargoMassInput = document.querySelector("input[name = cargoMass]");
       console.log(pilotInput.value);
 
-if ((pilotInput.value ===") || (copilotInput.value ===") || (fuelLevelInput.value ===") || (cargoMassInput.value ===")) {
+if ((pilotInput.value ==="") || (copilotInput.value ==="") || (fuelLevelInput.value ==="") || (cargoMassInput.value ==="")) {
       alert("Please enter all information");
          event.preventDefault();
 
