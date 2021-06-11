@@ -41,24 +41,39 @@ if ((pilotInput.value ===") || (copilotInput.value ===") || (fuelLevelInput.valu
 }else {
    document.getElementById("pilotStatus").innerHTML = "pilot " + pilotInput.value + "Ready";
    document.getElementById("copilotStatus").innerHTML = "Co-pilot " + copilotInput.value + "Ready";
-   
-      if (fuelLevelInput.value <= 10000) {
-            document.getElementById("faultyItems").style.visibility = "visible";
-            document.getElementById("fuelStatus").innerHTML = "Fuel level too Low for Launch";
-               } else {
-                  document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for Launch";
-}
-      if (cargoMassInput.value >= 10000) {
-            document.getElementById("faultyItems").style.visibility = "visible";
-            document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
-               } else {
-                  document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+
+if (fuelLevelInput.value <= 10000) {
+   document.getElementById("faultyItems").style.visibility = "visible";
+   document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready For Launch";
+   document.getElementById("launchStatus").style.color = "red";
+   document.getElementById("fuelStatus").innerHTML = "Fuel level too low for Launch";
+
+} else {
+   document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for launch";
 }
 
+if (cargoMassInput.value >= 10000) {
+   document.getElementById("faultyItem").style.visibilty = "visible";
+   document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
+   document.getElementById("launchStatus").style.color = "red";
+   document.getElementById("cargoStatus").innerHTML = "Cargo mass too high for launch";
 
-}      
+} else {
+   document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
 
-})
+}
+
+if (cargoMassInput.value <= 10000 && fuelLevelInput.value >= 10000) {
+   document.getElementById("launchStatus").innerHTML = "Shuttle Ready for Launch";
+   document.getElementById("launchStatus").style.color = "green";
+   document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+   document.getElementById("faultyItems").style.visibilty = "hidden";
+}
+event.preventDefault();
+
+}         
+});
+});
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
 <h2>Mission Destination</h2>
 <ol>
