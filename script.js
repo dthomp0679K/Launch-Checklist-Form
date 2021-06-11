@@ -28,6 +28,34 @@ form.addEventListener("submit", function(event){
 if ((pilotInput.value ===") || (copilotInput.value ===") || (fuelLevelInput.value ===") || (cargoMassInput.value ===")) {
       alert("Please enter all information");
          event.preventDefault();
+
+} else if (isNaN(pilotInput.value) === false || isNaN (copilotInput.value) === false) {
+      alert("Please enter Valid name for Pilot Name or Co-pilot Name (or both)");
+         event.preventDefault();
+
+}else if (isNaN(fuelLevelInput.value) === true || isNaN(cargoMassInput.value) === true) {
+  alert("please enter valid number for Fuel Level or Cargo Mass (or both)");
+   event.preventDefault();
+
+
+}else {
+   document.getElementById("pilotStatus").innerHTML = "pilot " + pilotInput.value + "Ready";
+   document.getElementById("copilotStatus").innerHTML = "Co-pilot " + copilotInput.value + "Ready";
+   
+      if (fuelLevelInput.value <= 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("fuelStatus").innerHTML = "Fuel level too Low for Launch";
+               } else {
+                  document.getElementById("fuelStatus").innerHTML = "Fuel level high enough for Launch";
+}
+      if (cargoMassInput.value >= 10000) {
+            document.getElementById("faultyItems").style.visibility = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
+               } else {
+                  document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
+}
+
+
 }      
 
 })
