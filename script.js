@@ -19,6 +19,7 @@ window.addEventListener("load", function() {
 
 let form = this.document.querySelector("form");
 form.addEventListener("submit", function(event){
+   event.preventDefault();
    let pilotInput = document.querySelector("input[name = pilotName]");
    let copilotInput = document.querySelector("input[name = copilotName]");
    let fuelLevelInput = document.querySelector("input[name = fuelLevel]");
@@ -27,15 +28,15 @@ form.addEventListener("submit", function(event){
 
 if ((pilotInput.value ==="") || (copilotInput.value ==="") || (fuelLevelInput.value ==="") || (cargoMassInput.value ==="")) {
       alert("Please enter all information");
-         event.preventDefault();
+         //event.preventDefault();
 
 } else if (isNaN(pilotInput.value) === false || isNaN (copilotInput.value) === false) {
       alert("Please enter Valid name for Pilot Name or Co-pilot Name (or both)");
-         event.preventDefault();
+         //event.preventDefault();
 
 }else if (isNaN(fuelLevelInput.value) === true || isNaN(cargoMassInput.value) === true) {
   alert("please enter valid number for Fuel Level or Cargo Mass (or both)");
-   event.preventDefault();
+   //event.preventDefault();
 
 
 }else {
@@ -53,7 +54,7 @@ if (fuelLevelInput.value <= 10000) {
 }
 
 if (cargoMassInput.value >= 10000) {
-   document.getElementById("faultyItem").style.visibilty = "visible";
+   document.getElementById("faultyItems").style.visibilty = "visible";
    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
    document.getElementById("launchStatus").style.color = "red";
    document.getElementById("cargoStatus").innerHTML = "Cargo mass too high for launch";
@@ -69,7 +70,7 @@ if (cargoMassInput.value <= 10000 && fuelLevelInput.value >= 10000) {
    document.getElementById("cargoStatus").innerHTML = "Cargo mass low enough for launch";
    document.getElementById("faultyItems").style.visibilty = "hidden";
 }
-event.preventDefault();
+//event.preventDefault();
 
 }         
 });
