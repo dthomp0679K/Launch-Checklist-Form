@@ -12,11 +12,25 @@ window.addEventListener("load", function() {
             <li>Star: ${json[missionDestination].star}</li>
             <li>Distance from Earth: ${json[missionDestination].moons}</li>
             </ol>
+            <img src = "${json[missionDestination].image}">
          `;   
    });
 });
 
+let form = this.document.querySelector("form");
+form.addEventListener("submit", function(event){
+   let pilotInput = document.querySelector("input[name = pilotName]");
+   let copilotInput = document.querySelector("input[name = copilotName]");
+   let fuelLevelInput = document.querySelector("input[name = fuelLevel]");
+   let cargoMassInput = document.querySelector("input[name = cargoMass]");
+      console.log(pilotInput.value);
 
+if ((pilotInput.value ===") || (copilotInput.value ===") || (fuelLevelInput.value ===") || (cargoMassInput.value ===")) {
+      alert("Please enter all information");
+         event.preventDefault();
+}      
+
+})
 /* This block of code shows how to format the HTML once you fetch some planetary JSON!
 <h2>Mission Destination</h2>
 <ol>
